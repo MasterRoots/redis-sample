@@ -11,11 +11,11 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/redis")
-public class SetOperationController {
+public class SetOpsController {
 
     private final SetOperation setOperation;
 
-    @PostMapping(path = "/set",consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/set", consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void set(@RequestBody final SetRequest setRequest){
          setOperation.set(setRequest.getKey(),setRequest.getValue());
