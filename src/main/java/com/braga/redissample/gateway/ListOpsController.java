@@ -65,7 +65,17 @@ public class ListOpsController {
         return operation.rpop(key);
     }
 
+    @PostMapping(path = "/blpop",consumes = APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<byte[]> blpop(@RequestBody final ListRequest request){
+        return operation.blpop(request);
+    }
 
+    @PostMapping(path = "/brpop",consumes = APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<byte[]> brpop(@RequestBody final ListRequest request){
+        return operation.blpop(request);
+    }
 
 
 

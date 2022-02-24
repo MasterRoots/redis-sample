@@ -16,4 +16,5 @@ public class ListRequest {
     private long index;
     private long indexStart;
     private long indexEnd;
+    private int timeout;
 }

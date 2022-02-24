@@ -2,9 +2,11 @@ package com.braga.redissample.usecases;
 
 import com.braga.redissample.model.ListRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Service
@@ -43,5 +45,19 @@ public class ListOperation {
 
     public String rpop(final String key){
         return  redisTemplate.opsForList().rightPop(key);
+    }
+
+    public List<byte[]> blpop(final ListRequest request){
+        return redisTemplate.execute((RedisCallback<List<byte[]>>)
+                con -> con.bLPop(request.getTimeout(), request.getKey().getBytes())
+
+        );
+    }
+
+    public List<byte[]> brpop(final ListRequest request){
+        return redisTemplate.execute((RedisCallback<List<byte[]>>)
+                con -> con.bRPop(request.getTimeout(), request.getKey().getBytes())
+
+        );
     }
 }
