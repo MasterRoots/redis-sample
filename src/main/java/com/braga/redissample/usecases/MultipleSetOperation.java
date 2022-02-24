@@ -10,12 +10,13 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class MultipleSetOperations {
+public class MultipleSetOperation {
 
     private final RedisTemplate<String, String> redisTemplate;
 
     public void multipleSet(final Map<String, String> multi){
         redisTemplate.opsForValue().multiSet(multi);
+
     }
 
     public List<String> multipleGet(final List<String> keys){
