@@ -74,7 +74,7 @@ public class ListOpsController {
     @PostMapping(path = "/brpop",consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<byte[]> brpop(@RequestBody final ListRequest request){
-        return operation.blpop(request);
+        return operation.brpop(request);
     }
 
 
